@@ -30,10 +30,11 @@ pipeline {
         }
         
         stage('Deploy in K8s') {
-            kubernetesDeploy(configs:'springBootMongo.yml',
-            kubeconfigId:'Kubernetes_Cluster_Config',
-            enableConfigSubstitution: true)
-          
+            steps {
+                kubernetesDeploy(configs:'springBootMongo.yml',
+                kubeconfigId:'Kubernetes_Cluster_Config',
+                enableConfigSubstitution: true)
+            }
         }
     }
 }
