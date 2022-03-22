@@ -9,8 +9,10 @@ pipeline {
         }
         
         stage('Build') {
+            steps{
             echo "Building Jar Componect ..."
             sh "mvn clean package"
+            }
         }
     }
 }
