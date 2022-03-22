@@ -60,7 +60,7 @@ spec:
     spec:
       containers:
       - name: springappcontainer
-        image: dockerhandson/springboot-mongodb
+        image: chash07/springboot-mongodb
         ports:
         - containerPort: 8080
         env:
