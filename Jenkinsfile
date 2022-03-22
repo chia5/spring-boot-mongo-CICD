@@ -7,5 +7,10 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/chia5/spring-boot-mongo-CICD.git'
             }
         }
+        
+        stage('Build') {
+            echo "Building Jar Componect ..."
+            sh "mvn clean package"
+        }
     }
 }
