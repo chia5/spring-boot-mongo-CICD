@@ -20,12 +20,20 @@ pipeline {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
                     /*Build Docker Image locally*/
-                    myImage = docker.build("chash07/springboot-mongodb")
+                    myImage = docker.build("chash07/springboot-mongodb:latest ")
 
                     /*Push the container to the Registry */
                     myImage.push()
                     }
                 }
+            }
+        }
+        
+        stage('Deploy in K8s') {
+            steps {
+                KubernetesDeploy(configs:'springBootMongo.yml',
+                kubeconfigId:'Kubernetes_Cluster_Config',
+                enableConfigSubstitution: true)
             }
         }
     }
